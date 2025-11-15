@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <title>Aplikasi Keuangan Sederhana</title>
-<meta name="description" content="Aplikasi web untuk mencatat pemasukan, pengeluaran, dan menghitung saldo otomatis.">
+<meta name="google-site-verification" content="googleba37d536d4ece2d3.html">
 <meta name="keywords" content="aplikasi keuangan, catatan keuangan, pemasukan pengeluaran, aplikasi web keuangan">
 <meta name="author" content="nurxrdhn">
 
