@@ -28,12 +28,16 @@ COPY . .
 # Install dependency Laravel (tanpa dev)
 RUN composer install --no-dev --optimize-autoloader
 
-# Siapkan .env dan APP_KEY kalau belum ada
+# Siapkan .env dan APP_KEY
 RUN cp .env.example .env && php artisan key:generate
 
-# Expose port (Render nanti auto detect)
+# BUAT file database SQLite dan jalankan migrasi
+RUN mkdir -p database \
+    && touch database/database.sqlite \
+    && php artisan migrate --force
+
+# Expose port (Render akan pakai env PORT)
 EXPOSE 8000
 
 # Jalankan PHP built-in server, arahkan ke folder public
-# ${PORT:-8000} artinya kalau Render kasih ENV PORT dipakai itu, kalau tidak ya 8000
 CMD ["sh", "-c", "php -S 0.0.0.0:${PORT:-8000} -t public public/index.php"]
