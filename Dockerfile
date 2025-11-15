@@ -1,7 +1,7 @@
-# Use the official PHP image
-FROM php:8.2-fpm
+# Gunakan image PHP CLI
+FROM php:8.2-cli
 
-# Install system dependencies
+# Install sistem dependency
 RUN apt-get update && apt-get install -y \
     git \
     curl \
@@ -10,25 +10,30 @@ RUN apt-get update && apt-get install -y \
     libonig-dev \
     libxml2-dev \
     zip \
-    unzip
+    unzip \
+    && rm -rf /var/lib/apt/lists/*
 
-# Install PHP extensions
+# Install ekstensi PHP
 RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd
 
 # Install Composer
-COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 # Set working directory
 WORKDIR /var/www
 
-# Copy all files into the container
+# Copy semua file project ke dalam container
 COPY . .
 
-# Install PHP dependencies
+# Install dependency Laravel (tanpa dev)
 RUN composer install --no-dev --optimize-autoloader
 
-# Expose port 8000
+# Siapkan .env dan APP_KEY kalau belum ada
+RUN cp .env.example .env && php artisan key:generate
+
+# Expose port (Render nanti auto detect)
 EXPOSE 8000
 
-# Start Laravel server
-CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=8000"]
+# Jalankan PHP built-in server, arahkan ke folder public
+# ${PORT:-8000} artinya kalau Render kasih ENV PORT dipakai itu, kalau tidak ya 8000
+CMD ["sh", "-c", "php -S 0.0.0.0:${PORT:-8000} -t public public/index.php"]
