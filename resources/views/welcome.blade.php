@@ -1,12 +1,9 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <title>Aplikasi Keuangan Sederhana</title>
-<meta name="google-site-verification" content="googleba37d536d4ece2d3.html">
-<meta name="keywords" content="aplikasi keuangan, catatan keuangan, pemasukan pengeluaran, aplikasi web keuangan">
-<meta name="author" content="nurxrdhn">
+<!-- Google Search Console verification -->
+        <meta name="google-site-verification" content="tIsxd5gKIt9tofYcSQ4wmtp7zobxrKkA0bRaKwfgxYw" />
 
+        <meta name="description" content="Aplikasi web untuk mencatat pemasukan, pengeluaran, dan menghitung saldo otomatis.">
+        <meta name="keywords" content="aplikasi keuangan, catatan keuangan, pemasukan pengeluaran, aplikasi web keuangan">
+        <meta name="author" content="nurxrdhn">
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600" rel="stylesheet" />
