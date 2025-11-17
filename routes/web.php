@@ -2,6 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/googleba37d536d4ece2d3.html', function () {
+    return view('google-site-verification: googleba37d536d4ece2d3.html');
 });
