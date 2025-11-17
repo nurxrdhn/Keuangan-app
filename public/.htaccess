@@ -1,9 +1,13 @@
 <IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Bypass sitemap.xml agar dibaca langsung sebagai file statis,
+    # bukan lewat Laravel routing
+    RewriteRule ^sitemap\.xml$ sitemap.xml [L]
+
     <IfModule mod_negotiation.c>
         Options -MultiViews -Indexes
     </IfModule>
-
-    RewriteEngine On
 
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
